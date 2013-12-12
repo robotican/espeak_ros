@@ -12,10 +12,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
-find_path(ESPEAK_INCLUDE_DIRS 
+find_path(LIBESPEAK_INCLUDE_DIRS 
           NAMES speak_lib.h
           HINTS /usr/include/espeak)
-find_library(ESPEAK_LIBRARIES
+find_library(LIBESPEAK_LIBRARIES
              NAMES espeak
              HINTS /usr/lib/ /usr/x86_64-linux-gnu/
              PATH_SUFFIXES lib)
