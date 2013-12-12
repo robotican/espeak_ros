@@ -1,5 +1,14 @@
-#include <espeak/speak_lib.h>
+/*
+ * espeak_ros_node.cpp
+ *
+ * Originally copied from https://github.com/Teknoman117/linbot
+ *
+ * Modified by Murilo FM (muhrix@gmail.com)
+ * 12 Dec 2013
+ *
+ */
 
+#include <speak_lib.h>
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 
