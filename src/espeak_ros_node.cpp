@@ -14,7 +14,7 @@
 
 void string_received_callback(const std_msgs::String::ConstPtr& line) {
     /* Speak the string */
-    espeak_Synth(line->data.c_str(), line->data.length(), 0, POS_CHARACTER, 0, 
+    espeak_Synth(line->data.c_str(), line->data.length()+1, 0, POS_CHARACTER, 0, 
         espeakCHARS_AUTO | espeakPHONEMES | espeakENDPAUSE, NULL, NULL);
     espeak_Synchronize();
     ROS_INFO("Speaking: \"%s\"", line->data.c_str());
