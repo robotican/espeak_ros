@@ -6,7 +6,9 @@ project(espeak_ros)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  rospy
   std_msgs
+  dynamic_reconfigure
 )
 
 ## System dependencies are found with CMake's conventions
@@ -88,7 +90,7 @@ find_library(LIBESPEAK_LIBRARIES
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES espeak_ros
-  CATKIN_DEPENDS roscpp std_msgs
+  CATKIN_DEPENDS roscpp std_msgs dynamic_reconfigure
   DEPENDS libespeak-dev
 )
 
