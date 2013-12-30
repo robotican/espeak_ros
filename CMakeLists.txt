@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS thread)
 
 find_path(LIBESPEAK_INCLUDE_DIRS 
           NAMES speak_lib.h
@@ -78,6 +78,8 @@ find_library(LIBESPEAK_LIBRARIES
 #   std_msgs
 # )
 
+generate_dynamic_reconfigure_options(cfg/EspeakConfig.cfg)
+
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -91,7 +93,7 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES espeak_ros
   CATKIN_DEPENDS roscpp std_msgs dynamic_reconfigure
-  DEPENDS libespeak-dev
+  DEPENDS libespeak-dev Boost
 )
 
 ###########
@@ -104,6 +106,7 @@ catkin_package(
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${LIBESPEAK_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
 )
 
 ## Declare a cpp library
@@ -118,10 +121,13 @@ add_executable(espeak_node src/espeak_ros_node.cpp)
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(espeak_ros_node espeak_ros_generate_messages_cpp)
 
+add_dependencies(espeak_node ${PROJECT_NAME}_gencfg)
+
 ## Specify libraries to link a library or executable target against
 target_link_libraries(espeak_node
   ${catkin_LIBRARIES}
   ${LIBESPEAK_LIBRARIES}
+  ${Boost_LIBRARIES}
 )
 
 #############
