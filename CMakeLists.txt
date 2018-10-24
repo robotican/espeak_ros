@@ -78,7 +78,7 @@ find_library(LIBESPEAK_LIBRARIES
 #   std_msgs
 # )
 
-generate_dynamic_reconfigure_options(cfg/EspeakConfig.cfg)
+generate_dynamic_reconfigure_options(cfg/Espeak.cfg)
 
 ###################################
 ## catkin specific configuration ##
